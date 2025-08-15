@@ -1,0 +1,11 @@
+Para iniciar um modulo:
+go mod init nome/do/modulo
+
+executar 'main' se tem modulo:
+go run .
+
+executar o arquivo especifico:
+go run nomeArquivo.go
+
+para criar o exe:
+go build
