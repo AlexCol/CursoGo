@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math/rand"
 	"reflect"
+	"strconv"
 	"time"
 )
 
@@ -85,5 +86,34 @@ func main() {
 	fmt.Println("Valor de pi:", pi)
 	//pi = 3
 
+	//casting
+	var int8Var int8 = 127
+	var float64Var float64 = float64(int8Var)
+	fmt.Println("Valor int8:", int8Var)
+	fmt.Println("Valor float64:", float64Var)
+
+	float64Var += 1
+	int8Var = int8(float64Var)          //vai dar overflow
+	fmt.Println("Valor int8:", int8Var) //por isso aqui vai retornar -128
+
+	float64Var += 1.5
+	int32Var := int32(float64Var) // vai truncar, pois int32 não tem casas decimais
+	fmt.Println("Valor int32:", int32Var)
+	fmt.Println("Valor float64:", float64Var)
+
+	//casting from string
+	numFromString, err := strconv.Atoi("123")
+	if err != nil {
+		fmt.Println("Erro ao converter string para int:", err)
+	} else {
+		fmt.Println("Valor from string:", numFromString)
+	}
+
+	boolFromString, err := strconv.ParseBool("true")
+	if err != nil {
+		fmt.Println("Erro ao converter string para bool:", err)
+	} else {
+		fmt.Println("Valor from string:", boolFromString)
+	}
 	//fmt.Scanln()
 }
