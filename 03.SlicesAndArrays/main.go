@@ -3,7 +3,8 @@ package main
 import "fmt"
 
 func main() {
-	lista := []int{1, 2, 3, 4, 5}
+	//!! slice ('arrays' dinâmicos - declarados sem tamanho fixo)
+	lista := []int{1, 2, 3, 4, 5} //
 	fmt.Println(lista)
 	lista = append(lista, 6) //mas
 	fmt.Println(lista)
@@ -16,7 +17,6 @@ func main() {
 	}
 	fmt.Println(subLista)
 
-	//!! slice
 	//Primeiro índice inclusivo, segundo exclusivo.
 	fmt.Println("slice------------------------")
 	sliced := lista[1:4] // [2 3 4] //de index 1 até index 4-1 (é exclusivo)
@@ -43,6 +43,14 @@ func main() {
 	fmt.Println(s2)       // [0 0 10] -> s2 continua apontando para o array antigo
 
 	// s2 = s2[:len(s)] // daria panic: len(s2)=3, cap(s2)=4, não pode ir além da cap
+
+	//!!array (array de tamanho fixo)
+	fmt.Println("array------------------------")
+	array := [5]int{1, 2, 3, 4, 5}
+	fmt.Println(array)
+	array[0] = 10
+	fmt.Println(array)
+	//array = append(array, 6) //não funciona, pois o array é fixo, não pode crescer, pra isso precisa usar slice
 
 	//!!map
 	fmt.Println("map------------------------")
@@ -71,4 +79,79 @@ func main() {
 	for chave, valor := range mapPessoas {
 		fmt.Println(chave, valor)
 	}
+
+	meuOutroMap := map[int]string{1: "Um", 2: "Dois", 3: "Três", 4: "Quatro"} //A ordem de armazenamento e iteração será sempre imprevisível.
+	for chave, valor := range meuOutroMap {
+		fmt.Println(chave, valor)
+	}
+	valor, exists := meuOutroMap[5] //busca por chave inexistente
+	if !exists {
+		fmt.Println("Chave não encontrada")
+	} else {
+		fmt.Println("Valor:", valor)
+	}
+
+	mapForLoop := make(map[int]string)
+	itensMap := 5
+	for i := 0; i < itensMap; i++ {
+		mapForLoop[i] = fmt.Sprintf("Número %d", i)
+	}
+	mapForLoop[itensMap+1] = fmt.Sprintf("Número %d", itensMap+1)
+
+	i := 0
+	for i < itensMap+2 {
+		valor, existe := mapForLoop[i]
+		if existe {
+			fmt.Printf("Chave %d encontrada com valor: %s\n", i, valor)
+		} else {
+			fmt.Printf("Chave %d não encontrada\n", i)
+		}
+		i++
+	}
+
+	//!range
+	listaForRange := []int{1, 2, 3, 4, 5, 6, 7}
+	for index, valor := range listaForRange {
+		fmt.Printf("Index: %d, Valor: %d\n", index, valor)
+	}
+
+	//!delete (so funciona para map)
+	meuMapForDelete := map[int]string{1: "Um", 2: "Dois", 3: "Três", 4: "Quatro"}
+	fmt.Println(meuMapForDelete)
+	delete(meuMapForDelete, 2)
+	fmt.Println("Após delete:")
+	fmt.Println(meuMapForDelete)
+
+	//!set (é um map, onde o item é a chave, o valor do item é vazio ou qualquer coisa, pois é ignorado)
+	meuSet := make(map[string]struct{})
+	meuSet["item1"] = struct{}{}
+	meuSet["item2"] = struct{}{}
+	meuSet["item3"] = struct{}{}
+	fmt.Println(meuSet)
+
 }
+
+/*
+forEach:
+	for 'indice', 'valor' := range 'colecao' {
+		...logica
+	}
+
+for (normal)
+for i := 0; i < len(listaForRange); i++ {
+	...logica
+}
+
+while
+for 'minhaCondicao' {
+	...logica
+}
+
+Do While
+for { //sem condição
+	...logica
+	if ('minhaCondicao') { //if simula o 'while' no fim do código
+		break
+	}
+}
+*/
