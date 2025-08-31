@@ -14,5 +14,4 @@ func main() {
 	b := color.BlueString("BlueString")
 	r := color.RedString("RedString")
 	fmt.Println(b, r)
-
 }
