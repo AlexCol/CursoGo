@@ -24,7 +24,3 @@ func UseMutex() {
 	time.Sleep(500 * time.Millisecond)
 	fmt.Printf("Valor i é: %d", i)
 }
-
-func ChangeNumber(i *int, newNumber int) {
-	*i = newNumber
-}

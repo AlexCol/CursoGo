@@ -7,5 +7,6 @@ import (
 func main() {
 	//src.UseGo()
 	//src.UseWaitGroup()
-	src.UseMutex()
+	//src.UseMutex()
+	src.UseChannel()
 }
