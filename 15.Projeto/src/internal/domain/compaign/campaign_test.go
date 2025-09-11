@@ -1,8 +1,30 @@
 package campaign
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+)
 
 func TestNewCampaign(t *testing.T) {
+	//Arrange
+	assert := assert.New(t)
+	name := "Campaign X"
+	content := "Body"
+	contacts := []string{"email1@teste.com", "email2@teste.com", "email3@teste.com"}
+
+	// Act
+	campaign := NewCampaign(name, content, contacts)
+
+	//Assert
+	assert.Equal(campaign.ID, "1")
+	assert.Equal(campaign.Name, name)
+	assert.Equal(campaign.Content, content)
+	assert.Equal(len(campaign.Contacts), len(contacts))
+}
+
+/*
+testes feitos manualmente
 	name := "Campaign X"
 	content := "Body"
 	contacts := []string{"email1@teste.com", "email2@teste.com", "email3@teste.com"}
@@ -26,4 +48,4 @@ func TestNewCampaign(t *testing.T) {
 	if campaignContactsSize != contactsSize {
 		t.Errorf("Contacts list. Expected size %d, got %d", contactsSize, campaignContactsSize)
 	}
-}
+*/
