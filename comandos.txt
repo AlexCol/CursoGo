@@ -13,3 +13,7 @@ go run nomeArquivo.go
 
 para criar o exe:
 go build
+
+instalar pacotes:
+go get [nomePacote]
+ex: go get github.com/stretchr/testify
