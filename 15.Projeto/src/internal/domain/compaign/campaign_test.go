@@ -8,7 +8,7 @@ import (
 
 func TestNewCampaign(t *testing.T) {
 	//Arrange
-	assert := assert.New(t)
+	assert := assert.New(t) //assim não precisa passar T em cada assert
 	name := "Campaign X"
 	content := "Body"
 	contacts := []string{"email1@teste.com", "email2@teste.com", "email3@teste.com"}
