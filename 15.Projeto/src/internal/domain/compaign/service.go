@@ -10,5 +10,9 @@ type Service struct {
 
 func (s *Service) Create(newCampaign contract.NewCampaignDto) (string, error) {
 	campaign, err := NewCampaign(newCampaign.Name, newCampaign.Content, newCampaign.Emails)
-	return campaign.ID, err
+
+	if err != nil {
+		return "", err
+	}
+	return campaign.ID, nil
 }

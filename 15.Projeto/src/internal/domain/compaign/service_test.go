@@ -13,14 +13,14 @@ func Test_Create_Campaign(t *testing.T) {
 	service := Service{}
 	newCampaign := contract.NewCampaignDto{
 		Name:    "Teste Y",
-		Content: "",
+		Content: "Body",
 		Emails:  []string{"teste@teste.com"},
 	}
 
 	// Act
-	_, err := service.Create(newCampaign)
+	id, err := service.Create(newCampaign)
 
 	//Assert
+	assert.NotEmpty(id)
 	assert.Nil(err)
-	//assert.NotEmpty(id)
 }
